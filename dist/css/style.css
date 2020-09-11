@@ -114,7 +114,6 @@ main div {
     border-radius: 30px;
     padding: 0 10px;
     transition: all 0.3s ease;
-    flex: 0.3;
     display: grid;
     grid-template-columns: auto 1fr;
 }
@@ -170,6 +169,10 @@ main div {
     align-items: flex-end;
 }
 
+.today-weather>div:last-child>div {
+    text-align: center;
+}
+
 .today-weather>div:last-child span {
     font-size: 1.8rem;
     font-weight: 500;
@@ -180,14 +183,10 @@ main div {
 }
 
 
-.address-md {
+.address-md,
+.today-weather h2 {
     font-size: 1.8rem;
     font-weight: 500;
-}
-
-.today-weather h2 {
-    font-size: 2.2rem;
-    font-weight: 400;
 }
 
 /* END OF TODAY SECTION */
@@ -237,6 +236,14 @@ main div {
 @media (max-width: 576px) {
     html {
         font-size: 9.5px;
+    }
+
+    .today-weather h1 {
+        font-size: 4rem;
+    }
+
+    .today-weather img {
+        max-width: 60%;
     }
 }
 
