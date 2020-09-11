@@ -167,7 +167,7 @@ main div {
 }
 
 .today-weather>div:last-child {
-    align-items: center;
+    align-items: flex-end;
 }
 
 .today-weather>div:last-child span {
@@ -176,7 +176,7 @@ main div {
 }
 
 .today-weather h1 {
-    font-size: 7rem;
+    font-size: 5rem;
 }
 
 
@@ -186,7 +186,8 @@ main div {
 }
 
 .today-weather h2 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+    font-weight: 400;
 }
 
 /* END OF TODAY SECTION */
