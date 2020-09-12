@@ -13,7 +13,9 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 7em 0 0;
+    height: 100%;
+    background: #ddf
 }
 
 small {
@@ -25,7 +27,6 @@ a,
 input,
 span {
     font-size: 1.6rem;
-    color: #334;
 }
 
 h1 {
@@ -36,14 +37,14 @@ h2 {
     font-size: 2.8rem;
 }
 
-.app__container {
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
-}
-
 header nav {
     min-height: 50px;
+    top: 0;
+}
+
+nav {
+    background: #334;
+    color: #fff;
 }
 
 .brand {
@@ -99,18 +100,12 @@ header nav {
     -moz-text-fill-color: transparent;
 }
 
-main {
-    overflow-x: hidden;
-    background: linear-gradient(190deg, #fff, rgba(0, 153, 255, 0.2), #fff);
-}
-
 main div {
     animation: appear 0.25s ease-in forwards;
 }
 
 .search-form {
-    background: white;
-    border: 1px solid #ddd;
+    background: #fff;
     border-radius: 30px;
     padding: 0 10px;
     transition: all 0.3s ease;
@@ -128,73 +123,115 @@ main div {
     padding: 0.4em;
     border-radius: 30px;
     font-size: 1.4rem;
+    background: transparent;
 }
 
 .search-form .material-icons {
     font-size: 2rem;
+    color: #334;
 }
 
-/* TODAY SECTION */
-.today-section {
-    display: flex;
-}
-
-.today-section>div:first-child {
-    flex: 1;
-}
-
-.today-section>div:last-child {
-    flex: 0.6;
-}
-
-.today-weather-card {
+.content>section {
     margin: 2em 0;
-    padding: 2.5em;
-    background: #fff;
-    border-radius: 0.5em;
-}
-
-.today-weather {
     display: flex;
-    align-items: flex-end;
 }
 
-.today-weather>div {
+.content>section>div:first-child {
     flex: 1;
+    padding: 2.5rem;
+}
+
+.content>section>div:last-child {
+    flex: 0.5;
+}
+
+.content h1 {
+    display: inline-block;
+    font-size: 2.6rem;
+}
+
+.content address {
+    font-size: 1.6rem;
+    display: inline-block;
+}
+
+.hourly-section {
+    margin: 2em 0;
+}
+
+.hourly-section>div:first-child {
+    padding: 2em 1em;
+}
+
+.hourly-section>div>div:first-child {
+    padding: 0 1.5em;
+}
+
+.hourly-weather-summary {
+    border-bottom: 1px solid rgba(51, 51, 68, 0.25);
+    padding: 1em 1.5em;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.today-weather>div:last-child {
-    align-items: flex-end;
+.hourly-weather-summary span {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
 }
 
-.today-weather>div:last-child>div {
-    text-align: center;
-}
-
-.today-weather>div:last-child span {
-    font-size: 1.8rem;
+.hourly-weather-summary span:nth-child(2) {
+    font-size: 2rem;
     font-weight: 500;
+    min-width: 3em;
 }
 
-.today-weather h1 {
-    font-size: 5rem;
+.hourly-weather-summary span:nth-child(3) {
+    min-width: 15em;
 }
 
-
-.address-md,
-.today-weather h2 {
-    font-size: 1.8rem;
-    font-weight: 500;
+.hourly-weather-summary span:last-child {
+    min-width: 1.5em;
 }
 
-/* END OF TODAY SECTION */
+.hourly-weather-summary span .material-icons {
+    font-size: 2rem;
+    color: #09f;
+}
+
+.hourly-weather-summary span img {
+    max-width: 30%;
+    margin: -0.5em 0;
+}
+
+#hourly-weather-section {
+    padding: 2.5em 1em 0;
+}
+
+#hourly-weather-section>div:last-child>div:last-child {
+    border: none;
+}
+
+#hourly-weather-section>div:last-child>h3 {
+    padding: 0 1.5rem;
+    margin-top: 2em;
+}
+
+.muted {
+    opacity: 0.6;
+}
+
+/* END OF HOURLY SECTION */
 
 
 /* RADAR SECTION */
 #map {
     height: 100%;
+}
+
+.maps-info-window {
+    min-width: 300px;
 }
 
 /* END OF RADAR SECTION */
@@ -228,7 +265,9 @@ main div {
         margin-left: 0px;
     }
 
-    .today-section {
+    .today-section,
+    .hourly-section,
+    .daily-section {
         flex-direction: column;
     }
 }
@@ -238,12 +277,20 @@ main div {
         font-size: 9.5px;
     }
 
+    body {
+        padding-top: 5em;
+    }
+
     .today-weather h1 {
         font-size: 4rem;
     }
 
     .today-weather img {
-        max-width: 60%;
+        max-width: 80%;
+    }
+
+    .navbar .container form {
+        display: none;
     }
 }
 
