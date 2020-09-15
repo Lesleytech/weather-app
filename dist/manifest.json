@@ -29,7 +29,17 @@
             "type": "image/png"
         },
         {
+            "src": "/assets/icons/apple-icon-114x114.png",
+            "sizes": "114x114",
+            "type": "image/png"
+        },
+        {
             "src": "/assets/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/icons/apple-icon-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
         },
