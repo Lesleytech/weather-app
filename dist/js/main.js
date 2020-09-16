@@ -31,21 +31,6 @@ $(document).ready(() => {
     }
   });
 
-  let lastScrollTop = 0;
-  $(window).scroll(function () {
-    const st = $(this).scrollTop();
-    if (st > lastScrollTop) {
-      // downscroll code
-      $('#mobile-nav').css('bottom', '-100px');
-      $('header nav').css('top', '-100px');
-    } else {
-      // upscroll code
-      $('#mobile-nav').css('bottom', '0px');
-      $('header nav').css('top', '0px');
-    }
-    lastScrollTop = st;
-  });
-
   $('#search-form').submit(async (e) => {
     e.preventDefault();
     const city = $('#search-form input').val().trim().toLowerCase();
@@ -98,6 +83,7 @@ $(document).ready(() => {
         } else if (currentPage === 'days') {
           displayDailyWeather(city_weather);
         } else if (currentPage === 'radar') {
+          initMap(city_weather_current);
         }
       } catch (err) {
         showSnack('City not found');
@@ -164,12 +150,20 @@ const initMap = async ({
     content: `
       <div class="maps-info-window">
         <address class="address-md">${name}, ${country}</address>
-        <p>Temperature: ${temp}&deg;c</p>
-        <p class="text-capitalize">Description: ${weather[0].description}</p>
-        <p>Humidity: ${humidity}%</p>
-        <p>Pressure: ${pressure} hPa</p>
-        <p>Sunrise: ${moment.unix(sunrise).local().format('LT')}</p>
-        <p>Sunset: ${moment.unix(sunset).local().format('LT')}</p>
+        <p><span>Temperature: </span><span>${temp}&deg;c</span></p>
+        <p class="text-capitalize"><span>Description:</span><span> ${
+          weather[0].description
+        }</span></p>
+        <p><span>Humidity:</span> <span>${humidity}%</span></p>
+        <p><span>Pressure: </span> <span>${pressure} hPa</span></p>
+        <p><span>Sunrise</span> <span>${moment
+          .unix(sunrise)
+          .local()
+          .format('LT')}</span></p>
+        <p><span>Sunset</span> <span>${moment
+          .unix(sunset)
+          .local()
+          .format('LT')}</span></p>
       </div>`,
   });
 
@@ -221,7 +215,7 @@ const displayCurrentWeather = (data) => {
             <img src="https://openweathermap.org/img/wn/${
               data.weather[0].icon
             }@2x.png" alt="${data.weather[0].description}" width="100">
-            <small class="text-capitalize">${
+            <small class="text-capitalize" style="font-weight: 500;">${
               data.weather[0].description
             }</small>
           </div>
@@ -229,7 +223,7 @@ const displayCurrentWeather = (data) => {
             <div class="d-flex align-items-center">
               <span style="font-weight: 500;">Humidity</span>
             </div>
-            <span>${data.main.humidity}%</span>
+            <h1>${data.main.humidity}%</h1>
           </div>
         </div>
       </div>`);
@@ -378,7 +372,7 @@ const getUserLocation = () => {
   closeSnack('use-location-snack');
 
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(async (position) => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
       const { data } = await getWeatherInfo(
         position.coords.latitude,
         position.coords.longitude,
@@ -413,6 +407,7 @@ const getUserLocation = () => {
       } else if (currentPage === 'days') {
         displayDailyWeather(data);
       } else if (currentPage === 'radar') {
+        initMap(current_weather);
       }
     });
   }

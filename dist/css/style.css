@@ -13,11 +13,16 @@ html {
 
 body {
   margin: 0;
-  padding: 7em 0 0;
   min-height: 100vh;
   height: fit-content;
-  background: linear-gradient(180deg, rgba(95, 145, 255, 0.5), #ddf);
   background-attachment: fixed;
+}
+
+.app__container {
+  height: 100vh;
+  min-height: 600px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 small {
@@ -37,6 +42,10 @@ h1 {
 
 h2 {
   font-size: 2.8rem;
+}
+
+header {
+  background: #334;
 }
 
 header nav {
@@ -102,6 +111,11 @@ nav {
   -moz-text-fill-color: transparent;
 }
 
+main {
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(95, 145, 255, 0.5), #ddf);
+}
+
 main div {
   animation: appear 0.25s ease-in forwards;
 }
@@ -111,8 +125,9 @@ main div {
   border-radius: 30px;
   padding: 0 10px;
   transition: all 0.3s ease;
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  align-items: center;
+  max-width: 50%;
 }
 
 .search-form:focus-within {
@@ -126,6 +141,7 @@ main div {
   border-radius: 30px;
   font-size: 1.4rem;
   background: transparent;
+  max-width: 100%;
 }
 
 .search-form .material-icons {
@@ -267,10 +283,25 @@ main div {
   min-width: 300px;
 }
 
+.maps-info-window address {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.maps-info-window p {
+  font-size: 1.4rem;
+  margin: .5em 0;
+  font-weight: 500;
+}
+
+.maps-info-window>p>span:last-child {
+  opacity: .5;
+}
+
 /* END OF RADAR SECTION */
 
 .snack-bar {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 1.5em;
   width: fit-content;
@@ -292,7 +323,8 @@ main div {
 }
 
 #snack {
-  left: 3em;
+  top: 8em;
+  height: fit-content;
   padding: 1em 1.5em;
   display: none;
   animation: none;
@@ -340,6 +372,33 @@ main div {
   .nav__list li {
     margin-left: 0px;
   }
+
+  main {
+    background: #ddf;
+    position: relative;
+  }
+
+  #today-weather-section,
+  #hourly-weather-section,
+  #daily-weather-section {
+    padding: 0;
+    box-shadow: none !important;
+  }
+
+  .maps-info-window {
+    min-width: 200px;
+  }
+
+  #hourly-weather-section>div:first-child,
+  #daily-weather-section>div:first-child,
+  #hourly-weather-section>div:last-child>h3,
+  #daily-weather-section>div:last-child>h3 {
+    padding: 0;
+  }
+
+  .weather-summary {
+    padding: 1em 0;
+  }
 }
 
 @media (max-width: 800px) {
@@ -354,10 +413,6 @@ main div {
 @media (max-width: 576px) {
   html {
     font-size: 9.5px;
-  }
-
-  body {
-    padding-top: 5em;
   }
 
   .today-weather h1 {

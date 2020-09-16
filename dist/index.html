@@ -18,12 +18,12 @@
 <body>
     <div class="app__container">
         <header>
-            <nav class="navbar navbar-light px-0 fixed-top">
-                <div class="container">
-                    <a class="brand" href="#">
+            <div class="container">
+                <nav class="navbar navbar-light px-0">
+                    <a class="brand" href="/">
                         <img src="./assets/snow flake.svg" alt="logo">
                         Weather</a class="navbar_brand">
-                    <form class="form-inline search-form" id="search-form">
+                    <form class="search-form" id="search-form">
                         <i class="material-icons">search</i>
                         <input type="text" placeholder="Search city" />
                     </form>
@@ -45,14 +45,14 @@
                             <small>Radar</small>
                         </li>
                     </ul>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </header>
         <main>
             <!-- Content will be loaded here with jquery -->
         </main>
 
-        <nav class="navbar navbar-light d-block d-md-none p-0 fixed-bottom" id="mobile-nav">
+        <nav class="navbar navbar-light d-block d-md-none p-0" id="mobile-nav">
             <div class="container p-0">
                 <ul class="nav__list">
                     <li onclick="handleNavigation('today')" class="active to-today ml-0">
