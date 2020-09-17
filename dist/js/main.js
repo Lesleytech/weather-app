@@ -34,6 +34,8 @@ $(document).ready(() => {
   $('#search-form').submit(async (e) => {
     e.preventDefault();
     const city = $('#search-form input').val().trim().toLowerCase();
+    $('#search-form input').val('');
+    $('#loading').show();
     if (!navigator.onLine) {
       const searches = JSON.parse(localStorage.getItem('recent_search'));
       const index = searches.findIndex(
@@ -89,6 +91,7 @@ $(document).ready(() => {
         showSnack('City not found');
       }
     }
+    $('#loading').hide();
   });
 });
 
@@ -201,7 +204,9 @@ const displayCurrentWeather = (data) => {
   $('#today-weather-section').html(`
      <div>
         <h1>Today's Weather</h1>
-        <address> - ${data.name}, ${data.sys.country}</address>
+        <address> - ${data.name}${
+    data.sys.country ? ', ' + data.sys.country : ''
+  }</address>
         <small class="d-block muted">as of ${moment
           .unix(data.dt)
           .tz(data.timezone.toString())
@@ -233,7 +238,11 @@ const displayHourlyWeather = (data) => {
   const today = moment.unix(data.hourly[0].dt).format('dddd, MMMM D');
   $('#hourly-weather-section').html(`
     <div>
-      <h1>Hourly Weather</h1> <address> - ${data.location}</address>
+      <h1>Hourly Weather</h1> <address> - ${
+        data.location.split(', ')[1] !== 'undefined'
+          ? data.location
+          : data.location.split(', ')[0]
+      }</address>
       <small class="d-block muted">as of ${moment
         .unix(data.hourly[0].dt)
         .tz(data.timezone)
@@ -277,7 +286,11 @@ const displayDailyWeather = (data) => {
   const today = moment.unix(data.daily[0].dt).format('dddd, MMMM D');
   $('#daily-weather-section').html(`
     <div>
-      <h1>Daily Weather</h1> <address> - ${data.location}</address>
+      <h1>Daily Weather</h1> <address> - ${
+        data.location.split(', ')[1] !== 'undefined'
+          ? data.location
+          : data.location.split(', ')[0]
+      }</address>
       <small class="d-block muted">as of ${moment
         .unix(data.daily[0].dt)
         .tz(data.timezone)

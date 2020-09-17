@@ -334,6 +334,14 @@ main div {
   margin: 0;
 }
 
+#loading {
+  position: fixed;
+  top: 8em;
+  right: 3em;
+  display: none;
+  transform: scale(0.75);
+}
+
 @keyframes appear {
   from {
     opacity: 0;
@@ -398,6 +406,14 @@ main div {
 
   .weather-summary {
     padding: 1em 0;
+  }
+
+  #loading {
+    position: fixed;
+    top: 6em;
+    right: 2em;
+    display: none;
+    transform: scale(0.75);
   }
 }
 

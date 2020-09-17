@@ -8,6 +8,7 @@ const cacheAssets = [
   'pages/today.html',
   '/css/style.css',
   '/assets/snow flake.svg',
+  '/assets/loading.svg',
   '/js/main.js',
   'favicon.ico',
 ];
